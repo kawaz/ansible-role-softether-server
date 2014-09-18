@@ -1,0 +1,46 @@
+---
+- include: dependencies.yml
+
+- name: make prefix directory
+  file: >
+    path={{ se_prefix }}
+    state=directory
+
+- name: download
+  get_url: >
+    url=http://jp.softether-download.com/files/softether/{{ se_version }}-tree/Linux/SoftEther_VPN_Server/64bit_-_Intel_x64_or_AMD64/softether-vpnserver-{{ se_version }}-linux-x64-64bit.tar.gz
+    dest={{ tmpdir }}/softether-vpnserver-{{ se_version }}-linux-x64-64bit.tar.gz
+  register: download
+
+- name: unarchive
+  unarchive: >
+    src={{ tmpdir }}/softether-vpnserver-{{ se_version }}-linux-x64-64bit.tar.gz
+    dest={{ se_prefix }}
+  when: download.changed
+  register: unarchive
+
+- name: make
+  shell: yes 1 | make
+  args:
+    chdir: "{{ se_prefix }}/vpnserver"
+  when: unarchive.changed
+  register: make
+
+- name: configure lang.config
+  lineinfile: >
+    dest={{ se_prefix }}/vpnserver/lang.config
+    regexp=^(en|ja|cn)$
+    line={{ se_lang }}
+  when: make.changed
+
+- name: install init script
+  template: >
+    src=vpnserver.j2
+    dest=/etc/init.d/vpnserver
+    mode=0755
+
+- name: service on
+  service: >
+    name=vpnserver
+    enabled=yes
+    state=started

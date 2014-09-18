@@ -1,0 +1,5 @@
+---
+tmpdir: /tmp
+se_prefix: /usr/local
+se_version: v4.10-9473-beta-2014.07.12
+se_lang: en
