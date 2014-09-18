@@ -26,7 +26,7 @@ Nothing
 Example Playbook
 ----------------
 
-```yaml:
+```
 - hosts: servers
   roles:
      - { role: kawaz.softether-server }
