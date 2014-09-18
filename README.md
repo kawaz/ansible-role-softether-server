@@ -6,7 +6,7 @@ Install SoftEtherVPN Server.
 
 Requirements
 ------------
-
+Nothing
 
 Role Variables
 --------------
@@ -20,6 +20,7 @@ Role Variables
 
 Dependencies
 ------------
+Nothing
 
   
 Example Playbook
