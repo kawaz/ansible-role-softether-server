@@ -15,7 +15,7 @@ Role Variables
 |------------|----------------------------|------------------------------------------|
 | se_prefix  | /usr/local                 | The directory of SoftEtherVPN to install. It is Installed to `{{se_prefix}}/vpnserver/`. |
 | se_version | v4.10-9473-beta-2014.07.12 | The version of SoftEtherVPN to install   |
-| se_lang    | en                         | language setting. en|en|cn               |
+| se_lang    | en                         | The language setting. ja, en, cn               |
 
 
 Dependencies
