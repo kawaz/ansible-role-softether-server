@@ -11,6 +11,12 @@ Requirements
 Role Variables
 --------------
 
+| Name       | Default                    |  |
+|------------|----------------------------|--|
+| se_prefix  | /usr/local                 | The directory of SoftEtherVPN to install |
+| se_version | v4.10-9473-beta-2014.07.12 | The version of SoftEtherVPN to install   |
+| se_lang    | en                         | language setting. en|en|cn               |
+
 
 Dependencies
 ------------
@@ -19,9 +25,11 @@ Dependencies
 Example Playbook
 ----------------
 
-    - hosts: servers
-      roles:
-         - { role: kawaz.softether-server }
+```yaml:
+- hosts: servers
+  roles:
+     - { role: kawaz.softether-server }
+```
 
 License
 -------
